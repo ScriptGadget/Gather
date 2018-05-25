@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
 class Machine extends Component {
-  onLearnMore = point => {
-    this.props.navigation.navigate('MeasurementPoint', { point });
+  onLearnMore = data => {
+    return point => {
+      this.props.navigation.navigate('MeasurementPoint', { point: point, name: data.entities.points.byId[point].name });
+    }
   };
 
   render() {
@@ -25,7 +27,7 @@ class Machine extends Component {
               key={point}
               leftIcon={{ name: 'timeline' }}
               title={`${data.entities.points.byId[point].name}`}
-              onPress={() => this.onLearnMore(point)}
+            onPress={() => this.onLearnMore(data)(point)}
             />
           ))}
         </List>

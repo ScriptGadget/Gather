@@ -11,7 +11,7 @@ export const MeasurementStack = createStackNavigator({
   SiteList: {
     screen: SiteList,
     navigationOptions: {
-      title: 'Route',
+      title: 'My Route',
     },
   },
   Site: {

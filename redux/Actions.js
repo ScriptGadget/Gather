@@ -42,8 +42,13 @@ const normalized = {
           id: '6',
           name: 'Ratway',
         },
+        '7': {
+          site: '1',
+          id: '7',
+          name: 'Dwemer Forge',
+        },
       },
-      allIds: ['5', '6']
+      allIds: ['5', '6', '7']
     },
     points: {
       byId: {
@@ -59,8 +64,14 @@ const normalized = {
           name: 'Salinity Probe',
           unit: 'ppm'
         },
+        '13': {
+          machine: '7',
+          id: '13',
+          name: 'Spider Sensor',
+          unit: 'each'
+        },
       },
-      allIds: ['11', '12']
+      allIds: ['11', '12', '13']
     },
     readings: {
       byId: {

@@ -11,17 +11,19 @@ import { MapView } from 'expo';
 
 import { connect } from 'react-redux';
 
-import * as Actions from '../redux/Actions'; //Import your actions
+import * as Actions from '../redux/Actions';
 
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
 class SiteList extends Component {
-  onLearnMore = site => {
-    this.props.navigation.navigate('Site', { site });
+  onLearnMore = data => {
+    return site => {
+      this.props.navigation.navigate('Site', { site: site, name: data.entities.sites.byId[site].name } );
+    }
   };
 
   componentDidMount() {
-    this.props.getData(); //call our action
+    this.props.getData();
   }
 
   render() {
@@ -62,7 +64,7 @@ class SiteList extends Component {
               key={site}
               leftIcon={{ name: 'place' }}
               title={`${data.entities.sites.byId[site].name}`}
-              onPress={() => this.onLearnMore(site)}
+            onPress={() => this.onLearnMore(data)(site)}
             />
           ))}
         </List>
@@ -82,5 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(SiteList);

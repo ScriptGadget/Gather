@@ -6,13 +6,16 @@ import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
 class Site extends Component {
-  onLearnMore = machine => {
-    this.props.navigation.navigate('Machine', { machine });
+  
+  onLearnMore = data => {
+    return machine => {
+      this.props.navigation.navigate('Machine', { machine: machine, name: data.entities.machines.byId[machine].name });
+    }
   };
 
   render() {
     const data = this.props.data;
-    const site = data.entities.sites.byId[this.props.navigation.state.params.site];
+    const site  = data.entities.sites.byId[this.props.navigation.state.params.site];
     return (
       <ScrollView>
         <Text>
@@ -40,7 +43,7 @@ class Site extends Component {
               key={machine}
               leftIcon={{ name: 'device-hub' }}
               title={`${data.entities.machines.byId[machine].name}`}
-              onPress={() => this.onLearnMore(machine)}
+              onPress={() => this.onLearnMore(data)(machine)}
             />
           ))}
         </List>
