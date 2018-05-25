@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "scratch",
-    "description": "Just some doodling",
+    "name": "Gather",
+    "description": "A simple data gathering app",
     "slug": "snack-BkZrOuVyX",
     "privacy": "unlisted",
     "sdkVersion": "27.0.0",
