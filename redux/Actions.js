@@ -83,21 +83,17 @@ export const sample = {
 
 
 export function getData() {
-  console.log('Actions.js sample: ' + sample);
   return dispatch => {
     //Make API Call
     //delay the retrieval [Sample reasons only]
     setTimeout(() => {
-      const data = sample;
+      const data = normalized;
       dispatch({ type: DATA_AVAILABLE, data: data });
     }, 2000);
   };
 }
 
 export function addReading(reading) {
-
-  console.log('addReading('+reading+')');
-
   return dispatch => {
       dispatch({
         type: ADD_READING,

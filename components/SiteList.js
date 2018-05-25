@@ -46,22 +46,22 @@ class SiteList extends Component {
           longitudeDelta: 10,
         }}>
 
-        {data.sites.map(site => (
+        {data.entities.sites.allIds.map(site => (
           <MapView.Marker
             key={site}
-            coordinate={data.sitesById[site].location}
-            title={`${data.sitesById[site].name}`}
-            description={`${data.sitesById[site].description}`}
+            coordinate={data.entities.sites.byId[site].location}
+            title={`${data.entities.sites.byId[site].name}`}
+            description={`${data.entities.sites.byId[site].description}`}
           />
         ))}
         </MapView>
 
           <List>
-          {data.sites.map(site => (
+          {data.entities.sites.allIds.map(site => (
             <ListItem
               key={site}
               leftIcon={{ name: 'place' }}
-              title={`${data.sitesById[site].name}`}
+              title={`${data.entities.sites.byId[site].name}`}
               onPress={() => this.onLearnMore(site)}
             />
           ))}

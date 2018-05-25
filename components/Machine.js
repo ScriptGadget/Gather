@@ -12,7 +12,7 @@ class Machine extends Component {
   render() {
     const data = this.props.data;
     const machine =
-      data.machinesById[this.props.navigation.state.params.machine];
+      data.entities.machines.byId[this.props.navigation.state.params.machine];
 
     return (
       <ScrollView>
@@ -20,11 +20,11 @@ class Machine extends Component {
           {machine.name}
         </Text>
         <List>
-          {data.points.map(point => (
+          {data.entities.points.allIds.map(point => (
             <ListItem
               key={point}
               leftIcon={{ name: 'timeline' }}
-              title={`${data.pointsById[point].name}`}
+              title={`${data.entities.points.byId[point].name}`}
               onPress={() => this.onLearnMore(point)}
             />
           ))}

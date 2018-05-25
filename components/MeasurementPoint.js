@@ -28,7 +28,7 @@ class MeasurementPoint extends Component {
         <TextInput
           keyboardType="numeric"
           autoCapitalize="words" // solves a Samsung 6 keyboard issue where the decimal doesn't appear
-          placeholder={`Add a new ${data.pointsById[point].name} reading.`}
+          placeholder={`Add a new ${data.entities.points.byId[point].name} reading.`}
           onSubmitEditing={this._handleSubmit(point)}
           style={{ width: 300, height: 44, padding: 8 }}
         />
@@ -36,12 +36,12 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {data.newReadings.map(reading => (
+            {data.entities.readings.allIds.map(readingId => (
               <ListItem
-                key={reading}
+                key={readingId}
                 leftIcon={{ name: 'av-timer' }}
-                title={`${data.pointsById[reading.point].name}`}
-                subtitle={`${reading.value} ${data.pointsById[reading.point].unit}`}
+                title={`${data.entities.points.byId[data.entities.readings.byId[readingId].point].name}`}
+                subtitle={`${data.entities.readings.byId[readingId].value} ${data.pointsById[data.entities.readings.byId[readingId].point].unit}`}
               />
             ))}
           </List>

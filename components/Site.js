@@ -12,7 +12,7 @@ class Site extends Component {
 
   render() {
     const data = this.props.data;
-    const site = data.sitesById[this.props.navigation.state.params.site];
+    const site = data.entities.sites.byId[this.props.navigation.state.params.site];
     return (
       <ScrollView>
         <Text>
@@ -35,11 +35,11 @@ class Site extends Component {
         </MapView>
 
         <List>
-          {data.machines.map(machine => (
+          {data.entities.machines.allIds.map(machine => (
             <ListItem
               key={machine}
               leftIcon={{ name: 'device-hub' }}
-              title={`${data.machinesById[machine].name}`}
+              title={`${data.entities.machines.byId[machine].name}`}
               onPress={() => this.onLearnMore(machine)}
             />
           ))}
