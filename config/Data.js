@@ -1,4 +1,7 @@
-const sitesById = {
+const normalized = {
+  entities: {
+    sites: {
+      byId: {
   '1': {
     id: '1',
     name: 'Markarth',
@@ -17,9 +20,11 @@ const sitesById = {
     location: {latitude: 39.2188492, longitude: -121.0887236},
     description: "A beautiful, sleepy mountain village."
   },
-};
-
-const machinesById = {
+      },
+      allIds: ['1', '2', '3']
+    },
+    machines: {
+      byId: {
   '5': {
     site: '2',
     id: '5',
@@ -30,9 +35,11 @@ const machinesById = {
     id: '6',
     name: 'Ratway',
   },
-};
-
-const pointsById = {
+      },
+      allIds: ['5', '6']
+    },
+    points: {
+      byId: {
   '11': {
     machine: '5',
     id: '11',
@@ -45,14 +52,25 @@ const pointsById = {
     name: 'Salinity Probe',
     unit: 'ppm'
   },
-};
+      },
+      allIds: ['11', '12']
+    },
+    readings: {
+      byId: {
+      },
+      allIds: []
+    },
+  }
+}
+
 
 export const data = {
-  sitesById: sitesById,
-  machinesById: machinesById,
-  pointsById: pointsById,
-  sites: ['1', '2', '3'],
-  machines: ['5', '6'],
-  points: ['11', '12'],
-  newReadings: []
+  sitesById: normalized.entities.sites.byId,
+  machinesById: normalized.entities.machines.byId;,
+  pointsById: normalized.entities.points.byId,
+  sites: normalized.entities.sites.allIds,
+  machines: normalized.entities.machines.allIds,
+  points: normalized.entities.points.allIds,
+  newReadings: normalized.entities.points.allIds
 };
+
