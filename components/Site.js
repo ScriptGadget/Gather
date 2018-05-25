@@ -4,6 +4,7 @@ import { List, ListItem } from 'react-native-elements';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
+import * as Actions from '../redux/Actions';
 
 class Site extends Component {
   
@@ -16,6 +17,8 @@ class Site extends Component {
   render() {
     const data = this.props.data;
     const site  = data.entities.sites.byId[this.props.navigation.state.params.site];
+    const machines = Actions.ids_by_site(Actions.sample.entities.machines.byId)[site.id];
+    
     return (
       <ScrollView>
         <Text>
@@ -38,14 +41,19 @@ class Site extends Component {
         </MapView>
 
         <List>
-          {data.entities.machines.allIds.map(machine => (
+          {machines ? machines.map((machine, i) => (
             <ListItem
-              key={machine}
+              key={i}
               leftIcon={{ name: 'device-hub' }}
               title={`${data.entities.machines.byId[machine].name}`}
               onPress={() => this.onLearnMore(data)(machine)}
             />
-          ))}
+          )) : <ListItem
+                 key={'0'}
+                 leftIcon={{ name: 'cancel'}}
+                 title='No Machines At This Site'
+                 hideChevron
+              />}
         </List>
       </ScrollView>
     );
