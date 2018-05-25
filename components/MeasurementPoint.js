@@ -14,7 +14,8 @@ class MeasurementPoint extends Component {
       console.log(`_handleSubmit(${point}, ${event.nativeEvent.text})`);
       this.props.addReading({
         point: point,
-        value: event.nativeEvent.text
+        value: event.nativeEvent.text,
+        timestamp: Date.now()
       });
     };
   };
@@ -41,7 +42,7 @@ class MeasurementPoint extends Component {
                 key={readingId}
                 leftIcon={{ name: 'av-timer' }}
                 title={`${data.entities.points.byId[data.entities.readings.byId[readingId].point].name}`}
-                subtitle={`${data.entities.readings.byId[readingId].value} ${data.pointsById[data.entities.readings.byId[readingId].point].unit}`}
+              subtitle={`${data.entities.readings.byId[readingId].value} ${data.entities.points.byId[data.entities.readings.byId[readingId].point].unit}`}
               />
             ))}
           </List>

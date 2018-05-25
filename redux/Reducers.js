@@ -1,25 +1,27 @@
 import { bindActionCreators, combineReducers } from 'redux';
- 
+
 import * as Actions from "./Actions" //Import the actions types constant we defined in our actions
- 
+
 let dataState = { data: [], loading:true };
- 
+
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {
         case Actions.DATA_AVAILABLE:
             state = Object.assign({}, state, { data: action.data, loading:false });
             return state;
         case Actions.ADD_READING:
-            var newData = Object.assign({}, state.data, { newReadings: [...state.data.newReadings, action.reading] });
-            console.log('newData.newReadings: ' + newData.newReadings);
+            var newReadingId = '1'; // Maybe a sha1 Hash here?
+            var newReading = Object.assign({}, action.reading, {id: newReadingId});
+            var newData = Object.assign({}, state.data);
+            newData.entities.readings.byId[newReadingId] = newReading;
+            newData.entities.readings.allIds.push(newReadingId);
             state = Object.assign({}, state, { data: newData });
-            console.log('state.data.newReadings: ' + state.data.newReadings);      
             return state;
         default:
             return state;
     }
 };
- 
+
 // Combine all the reducers
 const rootReducer = combineReducers({
     dataReducer

@@ -71,17 +71,6 @@ const normalized = {
 }
 
 
-export const sample = {
-  sitesById: normalized.entities.sites.byId,
-  machinesById: normalized.entities.machines.byId,
-  pointsById: normalized.entities.points.byId,
-  sites: normalized.entities.sites.allIds,
-  machines: normalized.entities.machines.allIds,
-  points: normalized.entities.points.allIds,
-  newReadings: normalized.entities.readings.allIds
-};
-
-
 export function getData() {
   return dispatch => {
     //Make API Call
