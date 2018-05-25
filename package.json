@@ -1,0 +1,19 @@
+{
+  "name": "scratch",
+  "version": "0.0.0",
+  "description": "Just some doodling",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "expo": "^27.0.0",
+    "react": "16.3.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
+    "react-native-elements": "0.18.5",
+    "react-native-maps": "0.21.0",
+    "react-navigation": "2.0.1",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-thunk": "2.2.0"
+  }
+}
