@@ -72,10 +72,28 @@ export const sample = {
       },
       allIds: ['11', '12', '13']
     },
-    readings: {
+    newReadings: {
       byId: {
+        '23' : {
+          id: '23',
+          point: '13',
+          value: '14',
+          timestamp: 152601385772
+        },        
+        '22' : {
+          id: '22',
+          point: '11',
+          value: '2.5',
+          timestamp: 1527370545936
+        },
+        '21' : {
+          id: '21',
+          point: '11',
+          value: '2.6',
+          timestamp: 1527284192268
+        },
       },
-      allIds: []
+      allIds: ['23','22','21']
     },
   }
 }
@@ -124,3 +142,5 @@ const ids_by_nonunique_key = (key) => (data) =>
 export const ids_by_site = ids_by_nonunique_key('site')
 
 export const ids_by_machine = ids_by_nonunique_key('machine')
+
+export const ids_by_point = ids_by_nonunique_key('point')

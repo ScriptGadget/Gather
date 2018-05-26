@@ -22,10 +22,10 @@ class MeasurementPoint extends Component {
 
   render() {
     const data = this.props.data;
-    const point = data.entities.machine.byId[this.props.navigation.state.params];
+    const point = data.entities.points.byId[this.props.navigation.state.params.point];
+    const newReadings = Actions.ids_by_point(data.entities.newReadings.byId)[point.id];
     return (
       <ScrollView>
-
         <TextInput
           keyboardType="numeric"
           autoCapitalize="words" // solves a Samsung 6 keyboard issue where the decimal doesn't appear
@@ -37,14 +37,20 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {data.entities.readings.allIds.map(readingId => (
+            {newReadings ? newReadings.map((readingId, i) => (
               <ListItem
-                key={readingId}
+                key={i}
                 leftIcon={{ name: 'av-timer' }}
-                title={`${data.entities.points.byId[data.entities.readings.byId[readingId].point].name}`}
-              subtitle={`${data.entities.readings.byId[readingId].value} ${data.entities.points.byId[data.entities.readings.byId[readingId].point].unit}`}
+                title={`${point.name}`}
+                subtitle={`${data.entities.newReadings.byId[readingId].value} ${point.unit}`}
+                hideChevron
               />
-            ))}
+            )) : <ListItem
+                 key={'0'}
+                 leftIcon={{ name: 'cancel'}}
+                 title='No Unsent Readings Found'
+                 hideChevron
+              />}
           </List>
         </ScrollView>
 

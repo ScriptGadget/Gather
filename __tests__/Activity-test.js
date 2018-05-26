@@ -11,3 +11,8 @@ it('retrieves machines by site', () => {
 it('retrieves points by machine', () => {
   expect( Actions.ids_by_machine(Actions.sample.entities.points.byId)['5'].sort()).toEqual(['11','12']);
 });
+
+it('retrieves readings by point', () => {
+  expect( Actions.ids_by_point(Actions.sample.entities.newReadings.byId)['12']).toBe(undefined);
+  expect( Actions.ids_by_point(Actions.sample.entities.newReadings.byId)['11'].sort()).toEqual(['21','22']);
+});
