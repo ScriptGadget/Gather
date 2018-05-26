@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
-import * as Actions from '../redux/Actions'; //Import your actions
+import * as Data from '../config/Data';
 
 class MeasurementPoint extends Component {
   _handleSubmit = point => {
@@ -23,7 +23,7 @@ class MeasurementPoint extends Component {
     const data = this.props.data;
     const point = data.entities.points.byId[this.props.navigation.state.params.point];
     const byId = data.entities.newReadings.byId;
-    const newReadings = Actions.ids_by_point(byId)[point.id];
+    const newReadings = Data.ids_by_point(byId)[point.id];
     return (
       <ScrollView>
         <TextInput

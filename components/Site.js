@@ -4,7 +4,7 @@ import { List, ListItem } from 'react-native-elements';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
-import * as Actions from '../redux/Actions';
+import * as Data from '../config/Data';
 
 class Site extends Component {
   
@@ -17,7 +17,7 @@ class Site extends Component {
   render() {
     const data = this.props.data;
     const site  = data.entities.sites.byId[this.props.navigation.state.params.site];
-    const machines = Actions.ids_by_site(data.entities.machines.byId)[site.id];
+    const machines = Data.ids_by_site(data.entities.machines.byId)[site.id];
     
     return (
       <ScrollView>

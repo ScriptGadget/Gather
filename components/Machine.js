@@ -3,7 +3,7 @@ import { Text, ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
-import * as Actions from '../redux/Actions';
+import * as Data from '../config/Data';
 
 class Machine extends Component {
   onLearnMore = data => {
@@ -16,7 +16,7 @@ class Machine extends Component {
     const data = this.props.data;
     const machine =
           data.entities.machines.byId[this.props.navigation.state.params.machine];
-    const points = Actions.ids_by_machine(data.entities.points.byId)[machine.id];
+    const points = Data.ids_by_machine(data.entities.points.byId)[machine.id];
 
     return (
       <ScrollView>

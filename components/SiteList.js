@@ -11,8 +11,6 @@ import { MapView } from 'expo';
 
 import { connect } from 'react-redux';
 
-import * as Actions from '../redux/Actions';
-
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
 class SiteList extends Component {
