@@ -78,7 +78,7 @@ export const sample = {
           id: '23',
           point: '13',
           value: '14',
-          timestamp: 152601385772
+          timestamp: 1527370545936
         },        
         '22' : {
           id: '22',
