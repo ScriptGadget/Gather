@@ -15,8 +15,8 @@ const dataReducer = (state = dataState, action) => {
             var newReadingId = JSON.stringify(action.reading);
             var newReading = Object.assign({}, action.reading, {id: newReadingId});
             var newData = Object.assign({}, state.data);
-            newData.entities.readings.byId[newReadingId] = newReading;
-            newData.entities.readings.allIds.push(newReadingId);
+            newData.entities.newReadings.byId[newReadingId] = newReading;
+            newData.entities.newReadings.allIds = [...newData.entities.newReadings.allIds, newReadingId];
             state = Object.assign({}, state, { data: newData });
             return state;
         default:
