@@ -17,7 +17,7 @@ class Site extends Component {
   render() {
     const data = this.props.data;
     const site  = data.entities.sites.byId[this.props.navigation.state.params.site];
-    const machines = Actions.ids_by_site(Actions.sample.entities.machines.byId)[site.id];
+    const machines = Actions.ids_by_site(data.entities.machines.byId)[site.id];
     
     return (
       <ScrollView>

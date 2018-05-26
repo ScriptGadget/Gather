@@ -122,3 +122,5 @@ const ids_by_nonunique_key = (key) => (data) =>
       }, {})
 
 export const ids_by_site = ids_by_nonunique_key('site')
+
+export const ids_by_machine = ids_by_nonunique_key('machine')

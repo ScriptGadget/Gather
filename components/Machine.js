@@ -3,6 +3,7 @@ import { Text, ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
+import * as Actions from '../redux/Actions';
 
 class Machine extends Component {
   onLearnMore = data => {
@@ -14,7 +15,8 @@ class Machine extends Component {
   render() {
     const data = this.props.data;
     const machine =
-      data.entities.machines.byId[this.props.navigation.state.params.machine];
+          data.entities.machines.byId[this.props.navigation.state.params.machine];
+    const points = Actions.ids_by_machine(data.entities.points.byId)[machine.id];
 
     return (
       <ScrollView>
@@ -22,14 +24,19 @@ class Machine extends Component {
           {machine.name}
         </Text>
         <List>
-          {data.entities.points.allIds.map(point => (
+          {points ? points.map((point, i) => (
             <ListItem
-              key={point}
+              key={i}
               leftIcon={{ name: 'timeline' }}
               title={`${data.entities.points.byId[point].name}`}
-            onPress={() => this.onLearnMore(data)(point)}
+              onPress={() => this.onLearnMore(data)(point)}
             />
-          ))}
+          )) : <ListItem
+                 key={'0'}
+                 leftIcon={{ name: 'cancel'}}
+                 title='No Measurement Points Found'
+                 hideChevron
+              />}
         </List>
       </ScrollView>
     );

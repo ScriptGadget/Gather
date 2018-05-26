@@ -21,16 +21,16 @@ class MeasurementPoint extends Component {
   };
 
   render() {
-    const { point } = this.props.navigation.state.params;
     const data = this.props.data;
+    const point = data.entities.machine.byId[this.props.navigation.state.params];
     return (
       <ScrollView>
 
         <TextInput
           keyboardType="numeric"
           autoCapitalize="words" // solves a Samsung 6 keyboard issue where the decimal doesn't appear
-          placeholder={`Add a new ${data.entities.points.byId[point].name} reading.`}
-          onSubmitEditing={this._handleSubmit(point)}
+          placeholder={`Add a new ${point.name} reading.`}
+          onSubmitEditing={this._handleSubmit(point.id)}
           style={{ width: 300, height: 44, padding: 8 }}
         />
 
