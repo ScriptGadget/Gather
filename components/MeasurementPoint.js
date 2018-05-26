@@ -14,7 +14,7 @@ class MeasurementPoint extends Component {
       this.props.addReading({
         point: point,
         value: event.nativeEvent.text,
-        timestamp: Date.now()
+        mark: Date.now()
       });
     };
   };
@@ -37,12 +37,12 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {newReadings ? newReadings.sort((a,b) => byId[b].timestamp - byId[a].timestamp).map((readingId, i) => (
+            {newReadings ? newReadings.sort((a,b) => byId[b].mark - byId[a].mark).map((readingId, i) => (
                 <ListItem
                   key={i}
                   leftIcon={{ name: 'av-timer' }}
                   title={`${point.name}`}
-              subtitle={`${byId[readingId].value} ${point.unit} [${new Date(byId[readingId].timestamp).toUTCString()}]`}
+              subtitle={`${byId[readingId].value} ${point.unit} [${new Date(byId[readingId].mark).toUTCString()}]`}
                   hideChevron
                 />
             )) : <ListItem

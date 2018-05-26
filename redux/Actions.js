@@ -78,19 +78,19 @@ export const sample = {
           id: '23',
           point: '13',
           value: '14',
-          timestamp: 1527370545936
+          mark: 1527370545936
         },        
         '22' : {
           id: '22',
           point: '11',
           value: '2.5',
-          timestamp: 1527370545936
+          mark: 1527370545936
         },
         '21' : {
           id: '21',
           point: '11',
           value: '2.6',
-          timestamp: 1527284192268
+          mark: 1527284192268
         },
       },
       allIds: ['23','22','21']
