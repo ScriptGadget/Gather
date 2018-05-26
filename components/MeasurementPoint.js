@@ -11,7 +11,6 @@ import * as Actions from '../redux/Actions'; //Import your actions
 class MeasurementPoint extends Component {
   _handleSubmit = point => {
     return event => {
-      console.log(`_handleSubmit(${point}, ${event.nativeEvent.text})`);
       this.props.addReading({
         point: point,
         value: event.nativeEvent.text,
@@ -23,7 +22,8 @@ class MeasurementPoint extends Component {
   render() {
     const data = this.props.data;
     const point = data.entities.points.byId[this.props.navigation.state.params.point];
-    const newReadings = Actions.ids_by_point(data.entities.newReadings.byId)[point.id];
+    const byId = data.entities.newReadings.byId;
+    const newReadings = Actions.ids_by_point(byId)[point.id];
     return (
       <ScrollView>
         <TextInput
@@ -37,20 +37,21 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {newReadings ? newReadings.map((readingId, i) => (
-              <ListItem
-                key={i}
-                leftIcon={{ name: 'av-timer' }}
-                title={`${point.name}`}
-                subtitle={`${data.entities.newReadings.byId[readingId].value} ${point.unit}`}
-                hideChevron
-              />
+            {newReadings ? newReadings.sort((a,b) => byId[b].timestamp - byId[a].timestamp).map((readingId, i) => (
+                <ListItem
+                  key={i}
+                  leftIcon={{ name: 'av-timer' }}
+                  title={`${point.name}`}
+              subtitle={`${byId[readingId].value} ${point.unit} [${new Date(byId[readingId].timestamp).toUTCString()}]`}
+                  hideChevron
+                />
             )) : <ListItem
-                 key={'0'}
-                 leftIcon={{ name: 'cancel'}}
-                 title='No Unsent Readings Found'
-                 hideChevron
-              />}
+                   key={'0'}
+                   leftIcon={{ name: 'cancel'}}
+                   title='No Unsent Readings Found'
+                   hideChevron
+                 />
+            }
           </List>
         </ScrollView>
 
