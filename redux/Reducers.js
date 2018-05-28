@@ -4,7 +4,7 @@ import * as Actions from "./Actions" //Import the actions types constant we defi
 
 import { sha1 } from 'sha1';
 
-let dataState = { data: [], loading:true };
+let dataState = { data: [], loading:true, signedIn: false };
 
 const dataReducer = (state = dataState, action) => {
     switch (action.type) {
