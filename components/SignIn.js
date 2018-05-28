@@ -14,17 +14,6 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {user: '', pass: ''};
-
-    this.handleUser = this.handleUser.bind(this);
-    this.handlePass = this.handlePass.bind(this);
-  }
-
-  handleUser(event) {
-    this.setState({user: event.target.value});
-  }
-  
-  handlePass(event) {
-    this.setState({pass: event.target.value});
   }
 
   render() {
@@ -35,14 +24,14 @@ class SignIn extends Component {
             style={styles.input}
             placeholder="me@example.com"
             autoCapitalize="none"
-            onChange={this.handleUser}
+            onChangeText={(text) => this.setState({user: text})}
           />
           <TextInput
             style={styles.input}
             placeholder="password"
             secureTextEntry={true}
             autoCapitalize="none"
-            onChange={this.handlePass}
+            onChangeText={(text) => this.setState({pass: text})}
           />
           <Button
             buttonStyle={{ marginTop: 20 }}
@@ -50,7 +39,7 @@ class SignIn extends Component {
             textStyle={{ color: "#bcbec1" }}
             title="Sign In"
             onPress={() => {
-              onSignIn(this.state.user, this.state.pass).then(() => this.props.navigation.navigate("SignedIn"))
+              onSignIn(this.state.user, this.state.pass).then(() => this.props.navigation.navigate("SignedIn"));
             }}
           />
         </Card>
