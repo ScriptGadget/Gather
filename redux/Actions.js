@@ -72,26 +72,8 @@ export const sample = {
     },
     newReadings: {
       byId: {
-        '23' : {
-          id: '23',
-          point: '13',
-          value: '14',
-          mark: 1527370545936
-        },        
-        '22' : {
-          id: '22',
-          point: '11',
-          value: '2.5',
-          mark: 1527370545936
-        },
-        '21' : {
-          id: '21',
-          point: '11',
-          value: '2.6',
-          mark: 1527284192268
-        },
       },
-      allIds: ['23','22','21']
+      allIds: []
     },
     history: {
       byId: {
