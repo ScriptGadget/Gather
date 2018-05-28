@@ -2,7 +2,7 @@
 
 import { AsyncStorage } from "react-native";
 
-export const USER_KEY = "auth-demo-key";
+export const USER_KEY = "gather-auth-key";
 
 export const onSignIn = (user, pass) => {
   return fetch('http://192.168.1.150:3000/api/Users/login', {
