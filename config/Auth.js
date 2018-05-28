@@ -5,8 +5,24 @@ import { AsyncStorage } from "react-native";
 export const USER_KEY = "auth-demo-key";
 
 export const onSignIn = (user, pass) => {
-    console.log(`onSignIn: user: ${user} pass: ${pass}`);
-    return AsyncStorage.setItem(USER_KEY, "true");
+  return fetch('http://192.168.1.150:3000/api/Users/login', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email: user,
+      password: pass,
+    }),
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      if(responseJson && responseJson.id) {
+        return AsyncStorage.setItem(USER_KEY, responseJson.id)
+      } else {
+        return Promise.reject(new Error('login failed'));
+      }
+    });
 }
 
 export const onSignOut = () => AsyncStorage.removeItem(USER_KEY);

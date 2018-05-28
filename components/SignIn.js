@@ -39,7 +39,9 @@ class SignIn extends Component {
             textStyle={{ color: "#bcbec1" }}
             title="Sign In"
             onPress={() => {
-              onSignIn(this.state.user, this.state.pass).then(() => this.props.navigation.navigate("SignedIn"));
+              onSignIn(this.state.user, this.state.pass)
+                .then( () => this.props.navigation.navigate("SignedIn"))
+                .catch( () => this.props.navigation.navigate("SignedOut"));
             }}
           />
         </Card>
