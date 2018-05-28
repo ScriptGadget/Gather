@@ -6,15 +6,10 @@ import {
 } from 'react-native';
 
 import { Card } from 'react-native-elements';
-
-import * as Auth from "../config/Auth";
+import { onSignOut } from "../config/Auth";
 
 class SignOut extends Component {
-  handlePress = () => {
-    Auth.onSignOut();
-    this.props.navigation.navigate('SignedOut');    
-  }
-  
+
   render() {
     return (
       <View style={styles.settingsContainer}>
@@ -24,13 +19,16 @@ class SignOut extends Component {
             backgroundColor="transparent"
             textStyle={{ color: "#bcbec1" }}
             title="Sign Out"
-            onPress={this.handlePress}
+            onPress={() => {
+              onSignOut().then(() => this.props.navigation.navigate("SignedOut"))
+            }}
           />
         </Card>
       </View>
     );
   }
 }
+
 const styles = StyleSheet.create({
   settingsContainer: {
     paddingVertical: 20,

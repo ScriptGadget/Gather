@@ -7,12 +7,24 @@ import {
   View,
 } from 'react-native';
 import { Card } from 'react-native-elements';
-import * as Auth from "../config/Auth";
+import { onSignIn } from "../config/Auth";
 
 class SignIn extends Component {
-  handlePress = () => {
-    Auth.onSignIn();
-    this.props.navigation.navigate('SignedIn');    
+
+  constructor(props) {
+    super(props);
+    this.state = {user: '', pass: ''};
+
+    this.handleUser = this.handleUser.bind(this);
+    this.handlePass = this.handlePass.bind(this);
+  }
+
+  handleUser(event) {
+    this.setState({user: event.target.value});
+  }
+  
+  handlePass(event) {
+    this.setState({pass: event.target.value});
   }
 
   render() {
@@ -22,17 +34,24 @@ class SignIn extends Component {
           <TextInput
             style={styles.input}
             placeholder="me@example.com"
+            autoCapitalize="none"
+            onChange={this.handleUser}
           />
           <TextInput
             style={styles.input}
             placeholder="password"
+            secureTextEntry={true}
+            autoCapitalize="none"
+            onChange={this.handlePass}
           />
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="transparent"
             textStyle={{ color: "#bcbec1" }}
             title="Sign In"
-            onPress={this.handlePress}
+            onPress={() => {
+              onSignIn(this.state.user, this.state.pass).then(() => this.props.navigation.navigate("SignedIn"))
+            }}
           />
         </Card>
       </View>
