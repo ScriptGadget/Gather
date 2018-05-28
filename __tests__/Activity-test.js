@@ -13,7 +13,7 @@ it('retrieves points by machine', () => {
   expect( Data.ids_by_machine(Actions.sample.entities.points.byId)['5'].sort()).toEqual(['11','12']);
 });
 
-it('retrieves readings by point', () => {
+it('retrieves history by point', () => {
   expect( Data.ids_by_point(Actions.sample.entities.newReadings.byId)['12']).toBe(undefined);
-  expect( Data.ids_by_point(Actions.sample.entities.newReadings.byId)['11'].sort()).toEqual(['21','22']);
+  expect( Data.ids_by_point(Actions.sample.entities.history.byId)['11'].sort()).toEqual(['31','32']);
 });
