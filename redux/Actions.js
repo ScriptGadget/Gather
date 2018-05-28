@@ -75,7 +75,7 @@ export const sample = {
       },
       allIds: []
     },
-    history: {
+    readings: {
       byId: {
         '33' : {
           id: '33',

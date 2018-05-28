@@ -14,6 +14,6 @@ it('retrieves points by machine', () => {
 });
 
 it('retrieves history by point', () => {
-  expect( Data.ids_by_point(Actions.sample.entities.newReadings.byId)['12']).toBe(undefined);
-  expect( Data.ids_by_point(Actions.sample.entities.history.byId)['11'].sort()).toEqual(['31','32']);
+  expect( Data.ids_by_point(Actions.sample.entities.readings.byId)['12']).toBe(undefined);
+  expect( Data.ids_by_point(Actions.sample.entities.readings.byId)['11'].sort()).toEqual(['31','32']);
 });
