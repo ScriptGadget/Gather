@@ -1,8 +1,6 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
 export const ADD_READING = 'ADD_READING';
 
-// import sample from '../config/Data'; // Not sure why this doesn't work.
-
 // So we'll just include it here.
 export const sample = {
   entities: {
@@ -66,7 +64,7 @@ export const sample = {
         '13': {
           machine: '7',
           id: '13',
-          name: 'Spider Sensor',
+          name: 'Spider Counter',
           unit: 'each'
         },
       },
@@ -95,6 +93,29 @@ export const sample = {
       },
       allIds: ['23','22','21']
     },
+    history: {
+      byId: {
+        '33' : {
+          id: '33',
+          point: '13',
+          value: '11',
+          mark: 1526100200336
+        },        
+        '32' : {
+          id: '32',
+          point: '11',
+          value: '2.9',
+          mark: 1526890286736
+        },
+        '31' : {
+          id: '31',
+          point: '11',
+          value: '3.0',
+          mark: 1526563933068
+        },
+      },
+      allIds: ['33','32','31']
+    }
   }
 }
 

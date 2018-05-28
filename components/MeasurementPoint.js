@@ -22,8 +22,10 @@ class MeasurementPoint extends Component {
   render() {
     const data = this.props.data;
     const point = data.entities.points.byId[this.props.navigation.state.params.point];
-    const byId = data.entities.newReadings.byId;
-    const newReadings = Data.ids_by_point(byId)[point.id];
+    const n = data.entities.newReadings;
+    const newReadings = Data.ids_by_point(n.byId)[point.id];
+    const h = data.entities.history;
+    const history = Data.ids_by_point(h.byId)[point.id];
     return (
       <ScrollView>
         <TextInput
@@ -37,12 +39,12 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {newReadings ? newReadings.sort((a,b) => byId[b].mark - byId[a].mark).map((readingId, i) => (
+            {newReadings ? newReadings.sort((a,b) => n.byId[b].mark - n.byId[a].mark).map((readingId, i) => (
                 <ListItem
                   key={i}
                   leftIcon={{ name: 'av-timer' }}
                   title={`${point.name}`}
-              subtitle={`${byId[readingId].value} ${point.unit} [${new Date(byId[readingId].mark).toUTCString()}]`}
+              subtitle={`${n.byId[readingId].value} ${point.unit} [${new Date(n.byId[readingId].mark).toUTCString()}]`}
                   hideChevron
                 />
             )) : <ListItem
@@ -55,6 +57,28 @@ class MeasurementPoint extends Component {
           </List>
         </ScrollView>
 
+        <Text>History</Text>
+        <ScrollView>
+          <List>
+            {history ? history.sort((a,b) => h.byId[b].mark - h.byId[a].mark).map((historyId, i) => (
+                <ListItem
+                  key={i}
+                  leftIcon={{ name: 'av-timer' }}
+                  title={`${point.name}`}
+              subtitle={`${h.byId[historyId].value} ${point.unit} [${new Date(h.byId[historyId].mark).toUTCString()}]`}
+                  hideChevron
+                />
+            )) : <ListItem
+                   key={'0'}
+                   leftIcon={{ name: 'cancel'}}
+                   title='No History Found'
+                   hideChevron
+                 />
+            }
+          </List>
+        </ScrollView>
+
+      
       </ScrollView>
     );
   }
