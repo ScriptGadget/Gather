@@ -40,16 +40,19 @@ class SiteList extends Component {
           <MapView
           style={{ alignSelf: 'stretch', height: 200 }}
           region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 10,
-          longitudeDelta: 10,
+          latitude: 35.12,
+          longitude: -102.01,
+          latitudeDelta: 3,
+          longitudeDelta: 3,
         }}>
 
         {data.entities.sites.allIds.map(site => (
           <MapView.Marker
             key={site}
-            coordinate={data.entities.sites.byId[site].location}
+            coordinate={{
+              latitude: data.entities.sites.byId[site].location.lat,
+              longitude: data.entities.sites.byId[site].location.lng,              
+            }}
             title={`${data.entities.sites.byId[site].name}`}
             description={`${data.entities.sites.byId[site].description}`}
           />

@@ -9,19 +9,19 @@ export const sample = {
         '1': {
           id: '1',
           name: 'Markarth',
-          location: {latitude: 31.8767366, longitude: -102.4135945},
+          location: {lat: 31.8767366, lng: -102.4135945},
           description: "Site of an old Dwemer city."
         },
         '2': {
           id: '2',
           name: 'Riften',
-          location: {latitude: 35.2021668, longitude: -101.9450282},
+          location: {lat: 35.2021668, lng: -101.9450282},
           description: "Once a bustling trade hub, now a decaying backwater full of thieves."
         },
         '3': {
           id: '3',
           name: 'Riverwood',
-          location: {latitude: 39.2188492, longitude: -121.0887236},
+          location: {lat: 39.2188492, lng: -121.0887236},
           description: "A beautiful, sleepy mountain village."
         },
       },

@@ -28,13 +28,16 @@ class Site extends Component {
         <MapView
           style={{ alignSelf: 'stretch', height: 200 }}
           region={{
-            latitude: site.location.latitude,
-            longitude: site.location.longitude,
+            latitude: site.location.lat,
+            longitude: site.location.lng,
             latitudeDelta: 1,
             longitudeDelta: 1,
           }}>
           <MapView.Marker
-            coordinate={site.location}
+            coordinate={{
+              latitude: site.location.lat,
+              longitude: site.location.lng,
+            }}
             title={site.name}
             description={site.description}
           />
