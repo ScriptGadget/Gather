@@ -25,7 +25,12 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.billglover.demo"
+      "package": "com.billglover.demo",
+      "config": {
+        "googleMaps":{
+          "apiKey": "AIzaSyCR5nHoZqp21YTyuJKBZ9jb9zQqmiJhfvg"
+        }
+      }
     }
   }
 }
