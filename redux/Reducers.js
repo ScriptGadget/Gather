@@ -2,7 +2,7 @@ import { bindActionCreators, combineReducers } from 'redux';
 
 import * as Actions from "./Actions" //Import the actions types constant we defined in our actions
 
-import { sha1 } from 'sha1';
+import sha1 from 'sha1';
 
 let dataState = { data: [], loading:true, signedIn: false };
 
@@ -12,7 +12,7 @@ const dataReducer = (state = dataState, action) => {
             state = Object.assign({}, state, { data: action.data, loading:false });
             return state;
         case Actions.ADD_READING:
-            var newReadingId = JSON.stringify(action.reading);
+            var newReadingId = sha1(JSON.stringify(action.reading));
             var newReading = Object.assign({}, action.reading, {id: newReadingId});
             var newData = Object.assign({}, state.data);
             newData.entities.newReadings.byId[newReadingId] = newReading;
