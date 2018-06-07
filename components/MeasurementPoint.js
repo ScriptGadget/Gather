@@ -12,7 +12,7 @@ class MeasurementPoint extends Component {
   _handleSubmit = point => {
     return event => {
       this.props.addReading({
-        point: point,
+        pointId: point,
         value: event.nativeEvent.text,
         mark: Date.now()
       });
