@@ -7,21 +7,21 @@ import sha1 from 'sha1';
 let dataState = { data: [], loading:true, signedIn: false };
 
 const dataReducer = (state = dataState, action) => {
-    switch (action.type) {
-        case Actions.DATA_AVAILABLE:
-            state = Object.assign({}, state, { data: action.data, loading:false });
-            return state;
-        case Actions.ADD_READING:
-            var newReadingId = sha1(JSON.stringify(action.reading));
-            var newReading = Object.assign({}, action.reading, {id: newReadingId});
-            var newData = Object.assign({}, state.data);
-            newData.entities.newReadings.byId[newReadingId] = newReading;
-            newData.entities.newReadings.allIds = [...newData.entities.newReadings.allIds, newReadingId];
-            state = Object.assign({}, state, { data: newData });
-            return state;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case Actions.DATA_AVAILABLE:
+      state = Object.assign({}, state, { data: action.data, loading:false });
+      return state;
+    case Actions.ADD_READING:
+      var newReadingId = sha1(JSON.stringify(action.reading));
+      var newReading = Object.assign({}, action.reading, {id: newReadingId});
+      var newData = Object.assign({}, state.data);
+      newData.entities.newReadings.byId[newReadingId] = newReading;
+      newData.entities.newReadings.allIds = [...newData.entities.newReadings.allIds, newReadingId];
+      state = Object.assign({}, state, { data: newData });
+      return state;
+    default:
+    return state;
+  }
 };
 
 // Combine all the reducers
