@@ -20,11 +20,10 @@ class MeasurementPoint extends Component {
   };
 
   render() {
-    const data = this.props.data;
-    const point = data.entities.points.byId[this.props.navigation.state.params.point];
-    const n = data.entities.newReadings;
+    const point = this.props.data.entities.points.byId[this.props.navigation.state.params.point];
+    const n = this.props.newReadings;
     const newReadings = Data.ids_by_point(n.byId)[point.id];
-    const h = data.entities.readings;
+    const h = this.props.data.entities.readings;
     const history = Data.ids_by_point(h.byId)[point.id];
     return (
       <ScrollView>

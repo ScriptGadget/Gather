@@ -1,7 +1,21 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
 export const ADD_READING = 'ADD_READING';
 
-// So we'll just include it here.
+// Samples for testing
+export const newReadingsSample = {
+      "newReadings" : {
+        "byId": {
+          "1" : {
+            id: 1,
+            pointId: 1,
+            value: 23.6,
+            mark: 1528401007777
+           }
+        },
+      "allIds": [1]
+    }
+}
+
 export const sample = {
   "entities": {
     "sites": {
@@ -87,10 +101,6 @@ export const sample = {
         "3",
         "4"
       ]
-    },
-    "newReadings" : {
-      "byId": {},
-      "allIds": []
     },
     "readings": {
       "byId": {

@@ -4,7 +4,15 @@ import * as Actions from "./Actions" //Import the actions types constant we defi
 
 import sha1 from 'sha1';
 
-let dataState = { data: [], loading:true, signedIn: false };
+let dataState = {
+  data: [],
+  newReadings: {
+    byId: { },
+    allIds: []
+  },
+  loading:true,
+  signedIn: false
+};
 
 const dataReducer = (state = dataState, action) => {
   switch (action.type) {
@@ -14,10 +22,10 @@ const dataReducer = (state = dataState, action) => {
     case Actions.ADD_READING:
       var newReadingId = sha1(JSON.stringify(action.reading));
       var newReading = Object.assign({}, action.reading, {id: newReadingId});
-      var newData = Object.assign({}, state.data);
-      newData.entities.newReadings.byId[newReadingId] = newReading;
-      newData.entities.newReadings.allIds = [...newData.entities.newReadings.allIds, newReadingId];
-      state = Object.assign({}, state, { data: newData });
+      var newData = Object.assign({}, state.newReadings);
+      newData.byId[newReadingId] = newReading;
+      newData.allIds = [...newData.allIds, newReadingId];
+      state = Object.assign({}, state, { newReadings: newData });
       return state;
     default:
     return state;
@@ -35,17 +43,19 @@ const rootReducer = combineReducers({
 // and insert/links it into the props of our component.
 // This function makes Redux know that this component needs to be passed a piece of the state
 export function mapStateToProps(state, props) {
-    return {
-        loading: state.dataReducer.loading,
-        data: state.dataReducer.data
-    }
+  return {
+    data: state.dataReducer.data,
+    newReadings: state.dataReducer.newReadings,
+    loading: state.dataReducer.loading,
+    signedIn: state.dataReducer.signedIn
+  }
 }
 
 // Doing this merges our actions into the component’s props,
 // while wrapping them in dispatch() so that they immediately dispatch an Action.
 // Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
 export function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Actions, dispatch);
+  return bindActionCreators(Actions, dispatch);
 }
 
 
