@@ -25,7 +25,9 @@ export const onSignIn = (user, pass) => {
     });
 }
 
-export const onSignOut = () => AsyncStorage.removeItem(USER_KEY);
+// We call clear because we don't want any of the redux-persist
+// data to remain either.
+export const onSignOut = () => AsyncStorage.clear();
 
 export const isSignedIn = () => {
   return new Promise((resolve, reject) => {
