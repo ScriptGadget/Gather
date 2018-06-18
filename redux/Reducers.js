@@ -4,21 +4,23 @@ import * as Actions from "./Actions" //Import the actions types constant we defi
 
 import sha1 from 'sha1';
 
-let dataState = {
+let initialState = {
   data: [],
   newReadings: {
     byId: { },
     allIds: []
   },
   loading:true,
-  signedIn: false
+  signedIn: false,
+  lastSynced: 0
 };
 
-const dataReducer = (state = dataState, action) => {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.DATA_AVAILABLE:
       state = Object.assign({}, state, { data: action.data, loading:false });
       return state;
+    
     case Actions.ADD_READING:
       var newReadingId = sha1(JSON.stringify(action.reading));
       var newReading = Object.assign({}, action.reading, {id: newReadingId});
@@ -27,8 +29,16 @@ const dataReducer = (state = dataState, action) => {
       newData.allIds = [...newData.allIds, newReadingId];
       state = Object.assign({}, state, { newReadings: newData });
       return state;
+    
+     case Actions.READING_SYNCED:
+      // remove a new reading that has been successfully synced
+      newState = Object.assign({}, state, { lastSynced: Date.now() });
+      delete newState.newReadings.byId[action.readingId];
+      newState.newReadings.allIds = state.newReadings.allIds.filter(x => x != action.readingId);
+      return newState;
+    
     default:
-    return state;
+     return state;
   }
 };
 
