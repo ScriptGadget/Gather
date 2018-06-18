@@ -183,7 +183,7 @@ export function getData() {
         dispatch({ type: DATA_AVAILABLE, data:  data});
       })
       .catch((error) => {
-        console.error(error);
+        console.log("Server not available: " + error);
       });
   };
 }
