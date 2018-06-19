@@ -16,6 +16,7 @@ class MeasurementPoint extends Component {
         value: event.nativeEvent.text,
         mark: Date.now()
       });
+      this.props.syncReadings(this.props.newReadings);
     };
   };
 

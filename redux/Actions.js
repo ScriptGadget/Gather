@@ -14,10 +14,8 @@ export function getData() {
     }).then((response) => response.json())
       .then((responseJson) => {
         data = responseJson["mine"];
-        data.entities["newReadings"] = {"byId": {}, "allIds": []};
         dispatch({ type: DATA_AVAILABLE, data:  data});
-      })
-      .catch((error) => {
+      }).catch((error) => {
         console.log("Retrieving Sites - Server not available: " + error);
       });
   };
@@ -25,7 +23,7 @@ export function getData() {
 
 export function addReading(reading) {
   return dispatch => {
-      return dispatch({ // return is just for easy unit testing
+      return dispatch({ // this return is just for easy unit testing
         type: ADD_READING,
         reading: reading
       });
@@ -43,12 +41,11 @@ export function syncReadings(readings) {
         },
         body: JSON.stringify(reading)
       }).then((response) => {
-        dispatch({ type: READING_SYNCED, readingId: reading.id });        
-      })
-        .catch((error) => {
+        dispatch({ type: READING_SYNCED, readingId: reading.id });
+        getData()(dispatch); // check for changes on the server.
+      }).catch((error) => {
           console.log("Syncing Readings - Server not available: " + error);
         });
     });
-
   };
 }

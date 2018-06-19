@@ -29,7 +29,7 @@ const dataReducer = (state = initialState, action) => {
       newData.allIds = [...newData.allIds, newReadingId];
       state = Object.assign({}, state, { newReadings: newData });
       return state;
-    
+
      case Actions.READING_SYNCED:
       // remove a new reading that has been successfully synced
       newState = Object.assign({}, state, { lastSynced: Date.now() });
