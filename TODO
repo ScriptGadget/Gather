@@ -1,5 +1,7 @@
 ## To Do
 + Use UUIDS (maybe even as keys?).
++ Require Authorization for Routes
++ Integration with Analysis System
 + Integrate Auth with the other storage and API calls.
 + Fix "last synced" indicator. (not showing for some reason)
 + Clear entry field on "Done"
