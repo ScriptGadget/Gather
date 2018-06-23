@@ -1,7 +1,13 @@
 ## To Do
++ Authorization
 + Use UUIDS (maybe even as keys?).
-+ Integrate Auth with the other storage and API calls.
++ Reporting
++ Management and Integration documentation
 + Fix "last synced" indicator. (not showing for some reason)
++ iOS Testing
++ Integrate Auth with the other storage and API calls.
++ Timed Sync?
++ Hosting / Domain
 + Clear entry field on "Done"
 
 ## Done
