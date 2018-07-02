@@ -10,11 +10,11 @@ const ids_by_unique_key = (key) => (data) =>  // make index(data) for key
 const ids_by_nonunique_key = (key) => (data) => 
       Object.values(data)
       .reduce((index, row) => {
-        previous = index['' + row[key]];
+        previous = index[row[key]];
         if (previous) {
-          index['' + row[key]] = [...previous, row.id];
+          index[row[key]] = [...previous, row.id];
         } else {
-          index['' + row[key]] = [row.id]; // There's bound to be a better way
+          index[row[key]] = [row.id]; // There's bound to be a better way
         }
         return index
       }, {})
