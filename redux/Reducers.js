@@ -11,7 +11,6 @@ let initialState = {
     allIds: []
   },
   loading:true,
-  signedIn: false,
   lastSynced: 0
 };
 
@@ -57,7 +56,7 @@ export function mapStateToProps(state, props) {
     data: state.dataReducer.data,
     newReadings: state.dataReducer.newReadings,
     loading: state.dataReducer.loading,
-    signedIn: state.dataReducer.signedIn
+    lastSynced: state.dataReducer.lastSynced
   }
 }
 

@@ -38,7 +38,7 @@ class Settings extends Component {
             onPress={() => this.props.syncReadings(this.props.newReadings)}
           />      
           <Text>Last Sent:</Text>
-          <Text>{this.props.lastSynced ? new Date(lastSynced).toUTCString() : "Unknown"}</Text>
+          <Text>{this.props.lastSynced ? new Date(this.props.lastSynced).toUTCString() : "Unknown"}</Text>
         </Card>
       </View>
     );
