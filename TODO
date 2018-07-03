@@ -1,16 +1,18 @@
 ## To Do
-+ Authorization
 + Integrate Auth with the other storage and API calls.
++ Authentication: wire signedIn through props
++ Authorization: Routes
 + Should /mine return Object instead of string?
-+ Import new routes as JSON
 + Management and Integration documentation
-+ Fix "last synced" indicator. (not showing for some reason)
 + iOS Testing
 + Timed Sync?
 + Hosting / Domain
-+ Clear entry field on "Done"
++ Clear entry field on "Done" (may be an Android thing)
++ Import new routes as JSON?
 
 ## Done
++ Move Auth functions to Store
++ Fix "last synced" indicator. (not showing for some reason)
 + Reporting (/reading GET with UUIDs for the win)
 + Use UUIDS (maybe even as keys?).
 + Separate new readings from old.
