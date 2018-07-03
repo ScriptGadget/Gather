@@ -1,6 +1,7 @@
 ## To Do
 + Integrate Auth with the other storage and API calls.
 + Authentication: wire signedIn through props
++ Authentication: send user key in header
 + Authorization: Routes
 + Should /mine return Object instead of string?
 + Management and Integration documentation
