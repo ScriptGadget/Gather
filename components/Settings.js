@@ -11,9 +11,7 @@ import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
-
-import { onSignOut } from "../config/Auth";
-import { syncUpdates } from "../redux/Actions";
+import { syncUpdates, onSignOut } from "../redux/Actions";
 
 class Settings extends Component {
 

@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Card } from 'react-native-elements';
-import { onSignIn } from "../config/Auth";
+import { onSignIn } from "../redux/Actions";
 
 class SignIn extends Component {
 

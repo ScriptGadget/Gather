@@ -4,7 +4,7 @@ import { Constants } from 'expo';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import { isSignedIn } from "./config/Auth";
+import { isSignedIn } from "./redux/Actions";
 
 import configureStore from './redux/Store';
 

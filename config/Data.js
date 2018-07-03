@@ -14,7 +14,7 @@ const ids_by_nonunique_key = (key) => (data) =>
         if (previous) {
           index[row[key]] = [...previous, row.id];
         } else {
-          index[row[key]] = [row.id]; // There's bound to be a better way
+          index[row[key]] = [row.id];
         }
         return index
       }, {})
