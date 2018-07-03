@@ -1,9 +1,8 @@
 ## To Do
-+ Reporting
-+ Import new routes as JSON
 + Authorization
 + Integrate Auth with the other storage and API calls.
 + Should /mine return Object instead of string?
++ Import new routes as JSON
 + Management and Integration documentation
 + Fix "last synced" indicator. (not showing for some reason)
 + iOS Testing
@@ -12,6 +11,7 @@
 + Clear entry field on "Done"
 
 ## Done
++ Reporting (/reading GET with UUIDs for the win)
 + Use UUIDS (maybe even as keys?).
 + Separate new readings from old.
 + Use redux-persist to check local first.
