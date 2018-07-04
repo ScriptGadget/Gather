@@ -1,8 +1,22 @@
-## To Do
+# To Do
+
+## Just a couple of quick notes for when I return to this in late July.
+
++ For Gather, just use Redux with SignIn (and SignOut?), then send the user key in the header with each Fetch.
++ For Store, Routes must belong to a particular pumper. (Two pumpers with the same site will have two different Route objects so they can change independently).
++ Move the test data setup to a Boot script to work with Auth.
++ Pumpers should only have access to POST /login, POST /logout, POST /Readings and GET /Routes/mine. Admin should have acceess to everything.
++ Setup a MongoDB connection.
++ Eject and strip Gather. Test build for iOS and Android.
++ Document deployment process, interface, architecture and design.
+
+## General TODO
+
 + Integrate Auth with the other storage and API calls.
 + Authentication: wire signedIn through props
 + Authentication: send user key in header
 + Authorization: Routes
++ Bug: Why do Readings sometimes display out of order?
 + Should /mine return Object instead of string?
 + Management and Integration documentation
 + iOS Testing
@@ -10,6 +24,8 @@
 + Hosting / Domain
 + Clear entry field on "Done" (may be an Android thing)
 + Import new routes as JSON?
+
+
 
 ## Done
 + Move Auth functions to Store
