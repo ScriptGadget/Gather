@@ -49,19 +49,25 @@ export const isSignedIn = () => {
 
 export function getData() {
   return dispatch => {
-    //Make API Call
-    fetch('http://192.168.1.150:3000/api/Routes/mine/', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        data = responseJson["mine"];
-        dispatch({ type: DATA_AVAILABLE, data:  data});
+    // Retrieve the session token
+    AsyncStorage.getItem(USER_KEY)
+      .then(user_key => {
+        // Make API Call
+        fetch('http://192.168.1.150:3000/api/Routes/mine?access_token=' + user_key, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }).then((response) => response.json())
+          .then((responseJson) => {
+            data = responseJson["mine"];
+            dispatch({ type: DATA_AVAILABLE, data:  data});
+          }).catch((error) => {
+            console.log("Retrieving Sites - Server not available: " + error);
+          });
       }).catch((error) => {
-        console.log("Retrieving Sites - Server not available: " + error);
+        console.log("Retrieving Sites - Not logged in: " + error);
       });
   };
 }
@@ -77,20 +83,27 @@ export function addReading(reading) {
 
 export function syncReadings(readings) {
   return dispatch => {
-    Object.values(readings.byId).map((reading) => { 
-      fetch('http://192.168.1.150:3000/api/Readings', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reading)
-      }).then((response) => {
-        dispatch({ type: READING_SYNCED, readingId: reading.id });
-        getData()(dispatch); // check for changes on the server.
-      }).catch((error) => {
-          console.log("Syncing Readings - Server not available: " + error);
+    // Retrieve the session token
+    AsyncStorage.getItem(USER_KEY)
+      .then(user_key => {
+        // Send each reading (individually for now)
+        Object.values(readings.byId).map((reading) => { 
+          fetch('http://192.168.1.150:3000/api/Readings?access_token=' + user_key, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reading)
+          }).then((response) => {
+            dispatch({ type: READING_SYNCED, readingId: reading.id });
+            getData()(dispatch); // check for changes on the server.
+          }).catch((error) => {
+            console.log("Syncing Readings - Server not available: " + error);
+          });
         });
-    });
+      }).catch((error) => {
+        console.log("Syncing Readings - Not logged in: " + error);
+      });
   };
 }
