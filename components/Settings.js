@@ -11,7 +11,7 @@ import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from '../redux/Reducers';
 
-import { syncUpdates, onSignOut } from "../redux/Actions";
+import { syncUpdates } from "../redux/Actions";
 
 class Settings extends Component {
 
@@ -25,7 +25,8 @@ class Settings extends Component {
             textStyle={{ color: "#bcbec1" }}
             title="Sign Out"
             onPress={() => {
-              onSignOut().then(() => this.props.navigation.navigate("SignedOut"))
+              this.props.onSignOut();
+              this.props.navigation.navigate("SignedOut");
             }}
           />
         </Card>

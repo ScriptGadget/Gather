@@ -1,6 +1,7 @@
 export const DATA_AVAILABLE = 'DATA_AVAILABLE';
 export const ADD_READING = 'ADD_READING';
 export const READING_SYNCED = 'READING_SYNCED';
+export const SIGNED_OUT = 'SIGNED_OUT';
 
 // Based on: https://medium.com/the-react-native-log/building-an-authentication-flow-with-react-navigation-fb5de2203b5c
 
@@ -29,9 +30,12 @@ export const onSignIn = (user, pass) => {
     });
 }
 
-// We call clear because we don't want any of the redux-persist
-// data to remain either.
-export const onSignOut = () => AsyncStorage.clear();
+export const onSignOut = () => {
+  return dispatch => {
+    AsyncStorage.clear();
+    dispatch({type: SIGNED_OUT});
+  };
+};
 
 export const isSignedIn = () => {
   return new Promise((resolve, reject) => {

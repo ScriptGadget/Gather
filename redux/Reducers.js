@@ -35,9 +35,12 @@ const dataReducer = (state = initialState, action) => {
       delete newState.newReadings.byId[action.readingId];
       newState.newReadings.allIds = state.newReadings.allIds.filter(x => x != action.readingId);
       return newState;
+
+     case Actions.SIGNED_OUT:
+      return initialState;
     
-    default:
-     return state;
+     default:
+      return state;
   }
 };
 
