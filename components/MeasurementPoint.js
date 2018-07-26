@@ -26,6 +26,8 @@ class MeasurementPoint extends Component {
     const newReadings = Data.ids_by_point(n.byId)[point.id];
     const h = this.props.data.entities.readings;
     const history = Data.ids_by_point(h.byId)[point.id];
+
+    console.log("history:\n" + JSON.stringify(history));
     return (
       <ScrollView>
         <TextInput
@@ -39,12 +41,12 @@ class MeasurementPoint extends Component {
         <Text>Readings Waiting to Send</Text>
         <ScrollView>
           <List>
-            {newReadings ? newReadings.sort((a,b) => n.byId[b].mark - n.byId[a].mark).map((readingId, i) => (
+            {newReadings ? newReadings.sort((a,b) => new Date(n.byId[b].mark).getTime() - new Date(n.byId[a].mark).getTime()).map((readingId, i) => (
                 <ListItem
                   key={i}
                   leftIcon={{ name: 'av-timer' }}
                   title={`${point.name}`}
-              subtitle={`${n.byId[readingId].value} ${point.unit} [${new Date(n.byId[readingId].mark).toUTCString()}]`}
+              subtitle={`${n.byId[readingId].value} ${point.unit} [${n.byId[readingId].mark}]`}
                   hideChevron
                 />
             )) : <ListItem
@@ -60,12 +62,12 @@ class MeasurementPoint extends Component {
         <Text>History</Text>
         <ScrollView>
           <List>
-            {history ? history.sort((a,b) => h.byId[b].mark - h.byId[a].mark).map((historyId, i) => (
+        {history ? history.sort((a,b) => new Date(h.byId[b].mark).getTime() - new Date(h.byId[a].mark).getTime()).map((historyId, i) => (
                 <ListItem
                   key={i}
                   leftIcon={{ name: 'av-timer' }}
                   title={`${point.name}`}
-              subtitle={`${h.byId[historyId].value} ${point.unit} [${new Date(h.byId[historyId].mark).toUTCString()}]`}
+              subtitle={`${h.byId[historyId].value} ${point.unit} [${h.byId[historyId].mark}]`}
                   hideChevron
                 />
             )) : <ListItem
