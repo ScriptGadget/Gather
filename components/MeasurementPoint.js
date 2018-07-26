@@ -27,7 +27,6 @@ class MeasurementPoint extends Component {
     const h = this.props.data.entities.readings;
     const history = Data.ids_by_point(h.byId)[point.id];
 
-    console.log("history:\n" + JSON.stringify(history));
     return (
       <ScrollView>
         <TextInput
