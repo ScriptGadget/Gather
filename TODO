@@ -1,34 +1,32 @@
 # To Do
 
-## Just a couple of quick notes for when I return to this in late July.
+## General TODO
 
-+ For Store, Routes must belong to a particular pumper. (Two pumpers with the same site will have two different Route objects so they can change independently).
-+ Move the test data setup to a Boot script to work with Auth.
-+ Pumpers should only have access to POST /login, POST /logout, POST /Readings and GET /Routes/mine. Admin should have acceess to everything.
++ Bug: Why do Readings sometimes display out of order?
 + Setup a MongoDB connection.
 + Eject and strip Gather. Test build for iOS and Android.
 + Document deployment process, interface, architecture and design.
-
-## General TODO
-
-+ Authorization: Routes
-+ Bug: Why do Readings sometimes display out of order?
-+ Should /mine return Object instead of string?
 + Management and Integration documentation
 + iOS Testing
 + Timed Sync?
 + Hosting / Domain
 + Clear entry field on "Done" (may be an Android thing)
-+ Import new routes as JSON?
 
 ## Deferred
 
-+ For Gather, just use Redux with SignIn (and SignOut?), then send the user key in the header with each Fetch.
++ Move the test data setup to a Boot script to work with Auth.
++ Pumpers should only have access to POST /login, POST /logout, POST /Readings and GET /Routes/mine. Admin should have acceess to everything.
++ Should /mine return Object instead of string?
 + Authentication: wire signedIn through props
++ Invalidate token on signout.
++ Import new routes as JSON?
 
 
 ## Done
 
++ For Gather, just use Redux with SignIn (and SignOut?), then send the user key in the header with each Fetch.
++ For Store, Routes must belong to a particular pumper. (Two pumpers with the same site will have two different Route objects so they can change independently).
++ Authorization: Routes
 + Authentication: send user key
 + Integrate Auth with the other API calls.
 + Move Auth functions to Store
