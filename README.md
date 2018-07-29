@@ -306,6 +306,8 @@ or Redux here. For more information, see the links in the Architecture section.
 
 The project directory is organized like this:
 
+```
+
 .
 ├── App.js
 ├── app.json
@@ -333,11 +335,13 @@ The project directory is organized like this:
 │   ├── Actions.js
 │   ├── Reducers.js
 │   └── Store.js
-├── \_\_samples\_\_
+├── __samples__
 │   └── Sample-data.js
-├── \_\_tests\_\_
+├── __tests__
 │   └── Actions-test.js
 └── TODO
+
+```
 
 + assets - contains static assets like icons and graphics.
 
