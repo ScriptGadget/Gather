@@ -67,9 +67,6 @@ Store is a [Loopback](https://loopback.io/getting-started/)
 application.
 
 
-## Structure
-
-
 ## API
 
 The Gather application talks to the Store server over HTTPS using a
@@ -301,3 +298,56 @@ Store has a much larger API than what is used by Gather. These API
 calls are used only by Analyze right now, or for debugging. For more
 information see [Store](https://bitbucket.org/Procrastes/store).
 
+## Structure
+
+Gather is a React-Native application which uses Redux for state. This is a
+pretty common configuration, so we won't discuss the basics of React, React-Native
+or Redux here. For more information, see the links in the Architecture section.
+
+The project directory is organized like this:
+
+.
+├── App.js
+├── app.json
+├── assets
+│   ├── expo.symbol.white.png
+│   ├── icon.png
+│   ├── icons
+│   │   ├── app-icon.png
+│   │   └── loading-icon.png
+│   └── splash.png
+├── components
+│   ├── Machine.js
+│   ├── MeasurementPoint.js
+│   ├── Settings.js
+│   ├── SignIn.js
+│   ├── Site.js
+│   └── SiteList.js
+├── config
+│   ├── Data.js
+│   └── Router.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── redux
+│   ├── Actions.js
+│   ├── Reducers.js
+│   └── Store.js
+├── \_\_samples\_\_
+│   └── Sample-data.js
+├── \_\_tests\_\_
+│   └── Actions-test.js
+└── TODO
+
++ assets - contains static assets like icons and graphics.
+
++ components - contains React-Native components. Think of each as a "screen" in the mobile application.
+
++ config - contains routing information (how we move from one screen to another) for react-navigation. You can read more [about react-navigation](https://reactnavigation.org/) at that project's webiste.
+
++ redux - contains the Actions, Reducers and Store elements of a
+  typical Redux project. All of the external API calls are in Actions.
+
++ \_\_samples\_\_  - contains sample data used for unit tests.
+
++ \_\_tests\_\_ - contains unit tests based on the [jest framework](https://jestjs.io/).
