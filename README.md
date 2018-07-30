@@ -106,11 +106,7 @@ information is normalized in the style of the normalizr Node library,
 but this project does not need or use normalizr. Note that each
 ID("id) is a a UUID. These are created by the Analyze system for all
 entities except Readings. Readings are created on the Gather system
-and Gather creates a temporary "pointId". The Store system then
-assigns an ID which is also a UUID. This becomes the permanent ID for
-that reading. In the future, the Gather system may just assign the
-actual ID and the pointID may no longer be used. For this reason, do
-not write any code depending on the existance of a pointID. 
+and Gather creates the ID.
 
 Returns a 401 error if the access_token is missing or invalid.
 
@@ -275,6 +271,7 @@ Store a new reading
     POST https://store.fieldguage.com/Readings?access_token=abc123
 
     {
+      "id": "a5111248-e93a-4141-9bfa-1dca038971d9",
       "value": 23.05,
       "mark": "2018-05-25T03:11:01.613Z",
       "pointId": "035d720e-66a9-41b9-b8ef-de611ed84a7e"
