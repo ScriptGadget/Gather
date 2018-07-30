@@ -3,12 +3,23 @@
 ## General TODO
 
 + Timed Sync?
-+ Setup a MongoDB connection.
-+ Eject and strip Gather. Test build for iOS and Android.
 + Management and Integration documentation
 + iOS Testing
-+ Hosting / Domain (DO and fieldguage.com?)
 + Clear entry field on "Done" (may be an Android thing)
+
+## Deployment
+
++ Consider versioning: https://loopback.io/doc/en/lb3/Versioning-your-API.html
++ Setup environment specific configurations
++ Setup a MongoDB connection.
++ Eject and strip Gather. Test build for iOS and Android.
++ Hosting / Domain (DO and fieldguage.com?)
++ Support phone number and email address
++ Customer support page
++ AppStore account
++ PlayStore Account
++ Privacy and Terms
++ Setup staging / CI environments
 
 ## Deferred
 
