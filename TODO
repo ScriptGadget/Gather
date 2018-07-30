@@ -3,12 +3,11 @@
 ## General TODO
 
 + Timed Sync?
-+ Document deployment process, interface, architecture and design.
 + Setup a MongoDB connection.
 + Eject and strip Gather. Test build for iOS and Android.
 + Management and Integration documentation
 + iOS Testing
-+ Hosting / Domain
++ Hosting / Domain (DO and fieldguage.com?)
 + Clear entry field on "Done" (may be an Android thing)
 
 ## Deferred
@@ -23,6 +22,7 @@
 
 ## Done
 
++ Document deployment process, interface, architecture and design.
 + Bug: Why do Readings sometimes display out of order?
 + For Gather, just use Redux with SignIn (and SignOut?), then send the user key in the header with each Fetch.
 + For Store, Routes must belong to a particular pumper. (Two pumpers with the same site will have two different Route objects so they can change independently).
