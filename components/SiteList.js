@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { MapView } from 'expo';
@@ -33,8 +34,27 @@ class SiteList extends Component {
           <ActivityIndicator animating={true} />
         </View>
       );
-    } else {
-      if (data.entities.sites.allIds.length < 1) {
+    }else{
+
+     if (!data || !data.entities) {
+       return (
+           <ScrollView style={{ padding: 20}}>
+              <Text style={{ alignSelf: 'stretch', height: 200, padding: 50 }}>
+                It looks like your login has timed out. Please logout and log back in. If this problem continues, please contact your Operator.
+             </Text>
+             <Button
+               buttonStyle={{ marginTop: 20 }}
+               backgroundColor="transparent"
+               textStyle={{ color: "#bcbec1" }}
+               title="Sign Out"
+               onPress={() => {
+                 this.props.onSignOut();
+                 this.props.navigation.navigate("SignedOut");
+               }}
+             />
+            </ScrollView>
+       );
+     } if (data.entities.sites.allIds.length < 1) {
         return (
             <ScrollView>
               <Text style={{ alignSelf: 'stretch', height: 200, padding: 50 }}>
