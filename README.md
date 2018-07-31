@@ -17,6 +17,8 @@ a tank, or a pressure guage and flow meter on a compressor.
 
 ## To Start Developing
 
+Install [expo](https://expo.io/) on a mobile device.
+
 Setup a [node.js development](https://nodejs.org/en/) environment.
 
 Clone this repository.
@@ -53,7 +55,7 @@ from Gather.
   creates all routes and Pumper accounts. Discussion of Analyze is
   beyond the scope of this document.
 
-Both Gather and Store are written in JavaScript. Analyze is writtin in C#.
+Both Gather and Store are written in JavaScript. Analyze is writen in in C#.
 
 Gather is a
 [React Native](https://facebook.github.io/react-native/)application,
@@ -100,7 +102,7 @@ Retrieve the Route
 
 
 Returns a JSON object containing the sites on a Pumper's route, the
-Machines at those sites, the Measurememnent Points on those machines
+Machines at those sites, the Measurement Points on those machines
 and any previous readings for those Measurement Points. The
 information is normalized in the style of the normalizr Node library,
 but this project does not need or use normalizr. Note that each
