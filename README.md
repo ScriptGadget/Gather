@@ -1,6 +1,6 @@
 # Gather - (Until we have a new name, fieldguage.com is available)
 
-Gather is a a simple data gathering app for iOS and Android.
+Gather is a simple data gathering app for iOS and Android.
 
 ## Introduction
 
@@ -106,7 +106,7 @@ Machines at those sites, the Measurement Points on those machines
 and any previous readings for those Measurement Points. The
 information is normalized in the style of the normalizr Node library,
 but this project does not need or use normalizr. Note that each
-ID("id) is a a UUID. These are created by the Analyze system for all
+ID("id") is a UUID. Readings are created by the Analyze system for all
 entities except Readings. Readings are created on the Gather system
 and Gather creates the ID.
 
