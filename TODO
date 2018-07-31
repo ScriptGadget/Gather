@@ -2,24 +2,27 @@
 
 ## General TODO
 
++ Update docs with entity information.
 + Timed Sync?
 + Management and Integration documentation
 + iOS Testing
 + Clear entry field on "Done" (may be an Android thing)
++ Code review by fresh eyes.
 
 ## Deployment
 
 + Consider versioning: https://loopback.io/doc/en/lb3/Versioning-your-API.html
 + Setup environment specific configurations
++ Setup staging / CI environments
 + Setup a MongoDB connection.
 + Eject and strip Gather. Test build for iOS and Android.
 + Hosting / Domain (DO and fieldguage.com?)
 + Support phone number and email address
-+ Customer support page
++ Customer support page (fieldguage.com  to http://tkremotesystems.com/)
 + AppStore account
 + PlayStore Account
 + Privacy and Terms
-+ Setup staging / CI environments
++ Branding and graphics
 
 ## Deferred
 
@@ -29,7 +32,6 @@
 + Authentication: wire signedIn through props
 + Invalidate token on signout.
 + Import new routes as JSON?
-
 
 ## Done
 
