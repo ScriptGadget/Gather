@@ -4,7 +4,7 @@ export const READING_SYNCED = 'READING_SYNCED';
 export const SIGNED_OUT = 'SIGNED_OUT';
 
 // change this to your server host
-api_url="'http://192.168.1.150:3000/api";
+api_url="http://192.168.1.150:3000/api";
 
 // Based on: https://medium.com/the-react-native-log/building-an-authentication-flow-with-react-navigation-fb5de2203b5c
 
