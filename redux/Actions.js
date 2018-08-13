@@ -3,6 +3,9 @@ export const ADD_READING = 'ADD_READING';
 export const READING_SYNCED = 'READING_SYNCED';
 export const SIGNED_OUT = 'SIGNED_OUT';
 
+// change this to your server host
+api_url="'http://192.168.1.150:3000/api";
+
 // Based on: https://medium.com/the-react-native-log/building-an-authentication-flow-with-react-navigation-fb5de2203b5c
 
 import { AsyncStorage } from "react-native";
@@ -10,7 +13,7 @@ import { AsyncStorage } from "react-native";
 export const USER_KEY = "gather-auth-key";
 
 export const onSignIn = (user, pass) => {
-  return fetch('http://192.168.1.150:3000/api/Pumpers/login', {
+  return fetch(api_url + '/Pumpers/login', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -57,7 +60,7 @@ export function getData() {
     AsyncStorage.getItem(USER_KEY)
       .then(user_key => {
         // Make API Call
-        fetch('http://192.168.1.150:3000/api/Routes/mine?access_token=' + user_key, {
+        fetch(api_url + '/Routes/mine?access_token=' + user_key, {
           method: 'GET',
           headers: {
             Accept: 'application/json',
@@ -92,7 +95,7 @@ export function syncReadings(readings) {
       .then(user_key => {
         // Send each reading (individually for now)
         Object.values(readings.byId).map((reading) => { 
-          fetch('http://192.168.1.150:3000/api/Readings?access_token=' + user_key, {
+          fetch(api_url + '/Readings?access_token=' + user_key, {
             method: 'POST',
             headers: {
               Accept: 'application/json',
