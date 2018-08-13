@@ -1,14 +1,14 @@
-# Gather - (Until we have a new name, fieldguage.com is available)
+# Gather
 
-Gather is a simple data gathering app for iOS and Android.
+Gather is a simple, offline first, data gathering app for iOS and Android.
 
 ## Introduction
 
-This app solves the problem of gathering measurements from wells where
+This app solves the problem of gathering measurements from locations where
 there may be instruments which are not online and in locations where there
 may be no cell data service.
 
-Pumpers follow a route, shown on a map to each site, where they can
+Technicians follow a route, shown on a map to each site, where they can
 enter readings for each measurement point at the site. Measurement
 Points are grouped to a particular piece of equipment, e.g. a tank or
 a pump. Each piece of equipment might have multiple things to
@@ -50,12 +50,12 @@ runs on mobile devices. This repository.
 which manages user logins, route information and collects readings
 from Gather.
 
-+ Analyze - a system used by Operators to analyze readings from
-  Pumpers and automated remote sensors. Analyze also manages and
-  creates all routes and Pumper accounts. Discussion of Analyze is
++ Analyze - a system used by Managers to analyze readings from
+  Technicians and automated remote sensors. Analyze also manages and
+  creates all routes and Technician accounts. Discussion of Analyze is
   beyond the scope of this document.
 
-Both Gather and Store are written in JavaScript. Analyze is writen in in C#.
+Both Gather and Store are written in JavaScript.
 
 Gather is a
 [React Native](https://facebook.github.io/react-native/)application,
@@ -77,7 +77,7 @@ REST interface. Gather uses three endpoints.
 Login:
 
 
-    POST https://store.fieldguage.com/Pumpers
+    POST https://store.domain.com/Technicians
 
 JSON BODY
   
@@ -98,10 +98,10 @@ as "id"
 
 Retrieve the Route
 
-    GET https://store.fieldguage.com/Routes/mine?access_token=abc123
+    GET https://store.domain.com/Routes/mine?access_token=abc123
 
 
-Returns a JSON object containing the sites on a Pumper's route, the
+Returns a JSON object containing the sites on a Technician's route, the
 Machines at those sites, the Measurement Points on those machines
 and any previous readings for those Measurement Points. The
 information is normalized in the style of the normalizr Node library,
@@ -270,7 +270,7 @@ Returns a 401 error if the access_token is missing or invalid.
 Store a new reading
 
 
-    POST https://store.fieldguage.com/Readings?access_token=abc123
+    POST https://store.domain.com/Readings?access_token=abc123
 
     {
       "id": "a5111248-e93a-4141-9bfa-1dca038971d9",

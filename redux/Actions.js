@@ -13,7 +13,7 @@ import { AsyncStorage } from "react-native";
 export const USER_KEY = "gather-auth-key";
 
 export const onSignIn = (user, pass) => {
-  return fetch(api_url + '/Pumpers/login', {
+  return fetch(api_url + '/Technicians/login', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
