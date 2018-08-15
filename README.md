@@ -43,10 +43,10 @@ Enjoy.
 
 This system has three pieces.
 
-+ [Gather](https://bitbucket.org/Procrastes/gather) - the app that
++ [Gather](https://github.com/ScriptGadget/gather) - the app that
 runs on mobile devices. This repository.
 
-+ [Store](https://bitbucket.org/Procrastes/store) - the backend server
++ [Store](https://github.com/ScriptGadget/store) - the backend server
 which manages user logins, route information and collects readings
 from Gather.
 
